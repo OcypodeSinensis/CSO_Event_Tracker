@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import CSOEvent, MitigationAction
 
-# Register your models here.
+admin.site.register(CSOEvent)
+admin.site.register(MitigationAction)
