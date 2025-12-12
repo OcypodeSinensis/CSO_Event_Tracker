@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSO Dashboard</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-bottom: 30px;
+            background: #eaeaea;
+        }
+    </style>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h1>CSO Dashboard</h1>
+
+<div id="map"></div>
+
+<canvas id="volumeChart" width="400" height="200"></canvas>
+
+<script>
+
+    const events = {{ events|safe }};
+
+    var map = L.map('map').setView([40.44, -79.99], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // placeholder chart
+    new Chart(document.getElementById('volumeChart'), {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Overflow Volume (m³)',
+                data: [],
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
