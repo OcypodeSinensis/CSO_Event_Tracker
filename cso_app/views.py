@@ -1,6 +1,22 @@
 from django.shortcuts import render, redirect
 from .forms import CSOEventForm
 from .models import CSOEvent
+from .forms import MitigationActionForm
+
+def add_action(request):
+    if request.method == "POST":
+        form = MitigationActionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("action_success")
+    else:
+        form = MitigationActionForm()
+
+    return render(request, "add_action.html", {"form": form})
+
+
+def action_success(request):
+    return render(request, "action_success.html")
 
 def report_event(request):
     if request.method == "POST":

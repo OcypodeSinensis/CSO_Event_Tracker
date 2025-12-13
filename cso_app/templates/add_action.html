@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Mitigation Action</title>
+</head>
+<body>
+    <h1>Add Mitigation Action</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Save Action</button>
+    </form>
+
+    <br>
+    <a href="/dashboard/">Back to Dashboard</a>
+</body>
+</html>
