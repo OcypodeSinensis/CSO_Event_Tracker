@@ -6,6 +6,8 @@ class CSOEventForm(forms.ModelForm):
         model = CSOEvent
         fields = [
             'location',
+            'latitude',
+            'longitude',
             'start_time',
             'end_time',
             'overflow_volume_m3',

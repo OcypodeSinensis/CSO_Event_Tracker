@@ -2,6 +2,8 @@ from django.db import models
 
 class CSOEvent(models.Model):
     location = models.CharField(max_length=255)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     overflow_volume_m3 = models.FloatField()

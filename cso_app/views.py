@@ -19,15 +19,22 @@ def report_success(request):
 def dashboard(request):
     events = CSOEvent.objects.all()
 
-    event_data = [
-        {
+    event_data = []
+    for event in events:
+        lat = event.latitude
+        lng = event.longitude
+
+        if lat is None or lng is None:
+            lat, lng = 40.4406, -79.9959  # default Pittsburgh center
+
+        event_data.append({
             "location": event.location,
+            "lat": lat,
+            "lng": lng,
             "severity": event.severity,
             "volume": event.overflow_volume_m3,
             "start_time": event.start_time.strftime("%Y-%m-%d %H:%M"),
-        }
-        for event in events
-    ]
+        })
 
     return render(request, 'dashboard.html', {"events": event_data})
 

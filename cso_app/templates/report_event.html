@@ -2,15 +2,66 @@
 <html>
 <head>
     <title>Report CSO Event</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        label { font-weight: bold; }
+        input, textarea, select {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 15px;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #005fa3; }
+    </style>
 </head>
 <body>
-    <h1>Report CSO Event</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit Event</button>
-    </form>
+
+<h1>Report a CSO Event</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Location (e.g., North Shore, SouthSide Works)</label>
+    {{ form.location }}
+
+    <label>Latitude</label>
+    {{ form.latitude }}
+    <small>Example: 40.4473</small><br>
+
+    <label>Longitude</label>
+    {{ form.longitude }}
+    <small>Example: -80.0060</small><br>
+
+    <label>Start Time</label>
+    {{ form.start_time }}
+
+    <label>End Time</label>
+    {{ form.end_time }}
+
+    <label>Overflow Volume (m³)</label>
+    {{ form.overflow_volume_m3 }}
+
+    <label>Cause</label>
+    {{ form.cause }}
+
+    <label>Severity</label>
+    {{ form.severity }}
+
+    <label>Description</label>
+    {{ form.description }}
+
+    <button type="submit">Submit Event</button>
+</form>
+
 </body>
 </html>
-
-
