@@ -15,6 +15,35 @@ This project includes:
     A Chart.js bar chart showing overflow volumes
 
     Ability to manually input latitude / longitude for exact mapping
+    A Mitigation Action feature for recording follow-up actions associated with CSO events
+
+    An Excel (XLSX) export function for downloading all CSO event records
+
+    A Django admin interface for managing events and mitigation actions
+
+    Dockerized deployment for portability
+
+    A GitHub Actions workflow that builds the Docker image automatically
+
+    A basic pytest + pytest-django test suite
+
+
+Application Pages
+
+Submit CSO Event:
+/report/
+
+Dashboard (map, chart, table):
+/dashboard/
+
+Add Mitigation Action:
+/action/add/
+
+Excel Export:
+/export/events.xlsx
+
+Admin Interface:
+/admin/
 
 Logs:
 
@@ -29,4 +58,18 @@ Logs:
     Built framework for the project around Django.
     Added dashboard, leaflet map and chartjs chart.
     Configured URLs, added color coded marker for event location on map.
+    Added mitigation action functionality
+    Implemented Excel export feature
+    Dockerized the application
+    Added GitHub Actions workflow for Docker builds
+    Added pytest-based testing configuration
 
+How to run:
+1: Install dependencies:
+    pip install -r requirements.txt
+
+2: Migrate:
+    python manage.py migrate
+
+3: Start Server
+    python manage.py runserver
